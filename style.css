@@ -1,0 +1,513 @@
+* {
+    font-family: "Montserrat";
+
+    /* supaya padding dan margin dihitung ke dalam lebar dan tinggi element, jadi tidak ada yang berlebih */
+    box-sizing: border-box;
+
+    /* supaya lebih smooth ketika click about service dll */
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    /*
+    Weight = ketebalan 
+    size = ukuran
+    */
+    font-weight: 700;
+    font-size: 48px;
+    margin: 0 0 16px 0;
+}
+
+a {
+    /* 
+    decoration untuk menghilangkan underline di link
+    color = warna
+    */
+    text-decoration: none;
+    color: black;
+    font-size: 24px;
+}
+
+p {
+    color: #979797;
+    /* 
+    margin atas 0, kanan 0, bawah 16, kiri 0
+    */
+    margin: 0 0 16px 0;
+    font-size: 24px;
+
+}
+
+section {
+    padding: 64px 128px;
+}
+
+/* supaya image dan iframe tidak tabrakan atau jebol */
+img,
+iframe {
+    width: 100%;
+}
+
+.btn {
+    background-color: #ffc108;
+    color: white;
+    /* 
+    padding,jarak keluar, 8px buat atas bawah, 24 px buat kiri kanan 
+    kalo ada 4 berarti atas, kanan, bawah, kiri
+    */
+    /* padding: 8px 24px 3px 42px; */
+    padding: 8px 24px;
+}
+
+.btn-alt {
+    background-color: white;
+    color: black;
+    /* 
+    margin right ngasih jarak di kanan ke dalam
+    */
+    margin-right: 16px;
+    border: 2px solid #ffc108;
+}
+
+#header {
+    display: flex;
+    /* align = vertical, justify = horizontal */
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 128px;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 5;
+}
+
+#header h1 {
+    margin: 0;
+    /* animasi flash terusan */
+    /* animation: flash 1s infinite; */
+
+    /* animasi ketika awal ada lompat lompat */
+    animation: bounceIn 1s;
+}
+
+@keyframes bounceIn {
+    0% {
+        filter: opacity(0);
+        transform: translateY(-20px);
+    }
+
+    35% {
+        filter: opacity(0.25);
+        transform: translateY(0);
+    }
+
+    70% {
+        filter: opacity(0.5);
+        transform: translateY(-10px);
+    }
+
+    100% {
+        filter: opacity(1);
+        transform: translateY(0);
+    }
+}
+
+/* keyframe supaya animasi bisa berjalan */
+@keyframes flash {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+#landing {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 16px;
+}
+
+#landing p {
+    margin-bottom: 32px;
+}
+
+#landing>div {
+    width: 50%;
+}
+
+.landing-image {
+    /* supaya gambar tidak jebol di layar kecil */
+    max-width: 100%;
+    height: auto;
+}
+
+nav>a {
+    margin-left: 12px;
+}
+
+/* Hover untuk ketika cursor ke arah nav, akan menyala warnanya */
+nav a:hover {
+    color: #ffc108;
+}
+
+#about {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 16px;
+}
+
+#about>div {
+    width: 50%;
+}
+
+.image-about {
+    max-width: 100%;
+    height: auto;
+}
+
+#about-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+    margin-top: 72px;
+}
+
+.about-stats-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.about-stats-item>div {
+    width: 50px;
+    height: 10px;
+    background-color: #ffc108;
+    margin-bottom: 16px;
+}
+
+.service-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/* Service header h1 dibuat relative supaya ketika pake absolute di h1 before, gambarnya tidak ke mana mana selain di h1 nya */
+.service-header h1 {
+    position: relative;
+}
+
+/* before untuk membuat garis di atas h1 */
+.service-header h1::before {
+    /* content untuk membuat konten dan menampilkan */
+    content: "";
+    width: 60px;
+    height: 60px;
+    /* background isinya gambar bola */
+    background: url(images/bola.png);
+    position: absolute;
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* position dibuat supaya pas di h1 */
+    left: -20px;
+    top: -10px;
+
+    /* z index untuk posisi gambar di bawah h1 */
+    z-index: -1;
+}
+
+.service-detail {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 128px;
+    margin-top: 72px;
+}
+
+.service-detail-item {
+    /* angka pertama kanan kiri, kedua atas bawah, ketiga ketebalan shadow */
+    /* box-shadow: 2px 4px 4px #979797; */
+    /* Atau rgba di mana angka sesuai dengan rgba , red, green, blue, a = ketebalan */
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.1);
+
+    /* rotate untuk memutar */
+    /* transform: rotate(90deg); */
+
+    /* translate untuk mengubah posisi */
+    /* transform: translate(100px); */
+
+    /* supaya lebih halus ketika klik item */
+    transition: transform 0.3s;
+}
+
+.service-detail-item:hover {
+    /* transform untuk mengubah bentuk
+    scale untuk ketika cursor diarahkan ke bagian itu, maka akan bertambah besar
+    */
+    transform: scale(1.15);
+}
+
+.image-service {
+    width: 100%;
+    height: auto;
+    /* Filter digunakan untuk mengubah tampilan gambar */
+    filter: grayscale();
+
+    /* isi brightness bisa dalam persentase atau angka biasa */
+    /* filter: brightness(60%); */
+}
+
+.image-service:hover {
+    /* supaya ketika cursor diarahkan, maka yang sebelumnya gambar abu jadi normal */
+    filter: grayscale(0);
+}
+
+.service-detail-item h2 {
+    padding: 0 16px;
+}
+
+.service-detail-item p {
+    font-size: 16px;
+    padding: 0 16px;
+}
+
+/* Service header h1 dibuat relative supaya ketika pake absolute di h1 before, gambarnya tidak ke mana mana selain di h1 nya */
+#contact h1 {
+    position: relative;
+}
+
+/* before untuk membuat garis di atas h1 */
+#contact>h1::before {
+    /* content untuk membuat konten dan menampilkan */
+    content: "";
+    width: 60px;
+    height: 60px;
+    /* background isinya gambar bola */
+    background: url(images/bola.png);
+    position: absolute;
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* position dibuat supaya pas di h1 */
+    left: -20px;
+    top: -10px;
+
+    /* z index untuk posisi gambar di bawah h1 */
+    z-index: -1;
+}
+
+.contact-detail {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 72px;
+    column-gap: 128px;
+}
+
+.contact-detail>div,
+.contact-detail>form {
+    width: 50%;
+}
+
+#input-name {
+    grid-area: name;
+}
+
+#input-subject {
+    grid-area: subject;
+}
+
+#input-email {
+    grid-area: email;
+}
+
+#input-phone {
+    grid-area: phone;
+}
+
+#input-message {
+    grid-area: message;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid #ffc108;
+    padding: 64px 32px;
+}
+
+form h1 {
+    font-size: 32px;
+    text-align: center;
+}
+
+form button {
+    border: none;
+}
+
+/* pointer supaya ketika cursor diarahkan ke tombol button yaitu submit, akan berubah jadi tangan  */
+form button:hover {
+    cursor: pointer;
+}
+
+.form-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 32px;
+    margin-top: 32px;
+    grid-template-areas: "name subject"
+        "email phone"
+        "message message";
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 32px;
+}
+
+.input-group label {
+    font-weight: 700;
+    margin-bottom: 16px;
+    font-size: 24px;
+}
+
+.input-group input {
+    border: none;
+    /* outline itu supaya ketika cursor ke form tidak akan keluar kotaknya */
+    outline: none;
+    border-bottom: 1px solid black;
+    font-size: 20px;
+}
+
+/* focus supaya ketika mau ngisi form, maka bagian yang mau diisi aknn keluar warna kuning */
+.input-group input:focus {
+    border-bottom: 2px solid #ffc108;
+}
+
+footer {
+    padding: 16px 128px;
+    background-color: #ffc108;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer p {
+    color: white;
+    width: 50%;
+}
+
+.social-icon {
+    display: flex;
+    gap: 16px;
+}
+
+footer div img {
+    width: 32px;
+    height: 100%;
+}
+
+@media only screen and (max-width: 1200px) {
+    section, #header {
+        padding: 32px 64px;
+    }
+
+    .service-detail {
+        gap: 24px;
+    }
+
+    .contact-detail {
+        gap: 24px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+
+
+@media only screen and (max-width: 992px) {
+    section, #header {
+        padding: 16px 32px;
+    }
+
+    section {
+        padding: 16px 32px;
+    }
+
+    #landing {
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    #landing>div {
+        width: 100%;
+    }
+
+    #about {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    #about>div {
+        width: 100%;
+    }
+
+    .service-detail {
+        gap: 16px;
+    }
+
+    .contact-detail {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        row-gap: 64px;
+    }
+
+    .contact-detail form, .contact-detail>div {
+        width: 100%;
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+    h1 {
+        font-size: 32px;
+    }
+
+    a, p {
+        font-size: 18px;
+    }
+
+    .service-detail {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group {
+        gap: 16px;
+    }
+
+    .image-service, .landing-image, .image-about {
+        height: auto;
+        max-width: 100%;
+    }
+}
